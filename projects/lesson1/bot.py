@@ -19,8 +19,24 @@ def wordcount(bot, update):
 def calc(bot, update):
     params=update.message.text.replace('/calc ','')
     params=params.replace('=','')
-    print(params)
-    
+#    print(params)
+    if '-' in params:
+        params_split=params.split('-')
+        result=int(params_split[0])-int(params_split[1])
+        print (result)
+    elif '+' in params:
+        params_split=params.split('+')
+        result=int(params_split[0])+int(params_split[1])
+        print (result)
+    elif '*' in params:
+        params_split=params.split('*')
+        result=int(params_split[0])*int(params_split[1])
+        print (result)
+    elif '/' in params:
+        params_split=params.split('/')
+        result=int(params_split[0])/int(params_split[1])
+        print (result)
+    bot.sendMessage(update.message.chat_id, text=result)
 
 def show_error(bot, update, error):
     print('Update "{}" caused error "{}"'.format(update, error))
